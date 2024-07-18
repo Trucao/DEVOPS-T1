@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-LABEL maintainer="kesaralive@gmail.com"
+LABEL maintainer="guilherme_lol75@hotmail.com"
 LABEL description="Apache / PHP development environment"
 
 ARG DEBIAN_FRONTEND=newt
