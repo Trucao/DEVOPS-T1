@@ -1,0 +1,16 @@
+Certifique-se de que o Minikube está rodando.
+Crie e edite os arquivos YAML para os deployments e services.
+Aplique os arquivos YAML ao cluster Kubernetes.
+Verifique se tudo está funcionando corretamente.
+Acesse os serviços externamente usando o IP e as portas configuradas.
+
+docker context use default
+
+ kubectl apply -f database-deployment.yaml
+ kubectl apply -f database-service.yaml	
+ kubectl apply -f backend-deployment.yaml
+ kubectl apply -f backend-service.yaml
+ kubectl apply -f frontend-deployment.yaml
+ kubectl apply -f frontend-service.yaml
+ kubectl apply -f phpmyadmin-deployment.yaml
+ kubectl apply -f phpmyadmin-service.yaml
