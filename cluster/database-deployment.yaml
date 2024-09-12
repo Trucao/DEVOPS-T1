@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql-container
+          image: truconses/t2:database
+          env:
+            - name: MYSQL_DATABASE
+              value: "todo_app"
+            - name: MYSQL_USER
+              value: "todo_admin"
+            - name: MYSQL_PASSWORD
+              value: "password"
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: "1"
+          volumeMounts:
+            - name: mysql-volume
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-volume
+          hostPath:
+            path: /mnt/my-app-data  # ajustar

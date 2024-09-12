@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: truconses/t2:backend  
+          ports:
+            - containerPort: 3001
+          volumeMounts:
+            - name: backend-volume
+              mountPath: /var/www/html/
+      volumes:
+        - name: backend-volume
+          hostPath:
+            path: /mnt/my-app-data  # ajustar
+            type: Directory 
