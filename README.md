@@ -2,6 +2,7 @@
 Trabalho de devops etapa 1
 
 Joao Ricardo Lopes Lovato
+
 Guilherme Silva Castro
 
 O projeto consiste em uma aplicação composta por quatro containers: três essenciais (frontend, backend e banco de dados) e um de gerenciamento (phpMyAdmin, utilizado opcionalmente para acessar o banco de dados). O frontend se comunica com o banco de dados por meio do backend, exibindo uma lista de tarefas (todo list) armazenada no banco, desde que todas as conexões estejam configuradas corretamente.
