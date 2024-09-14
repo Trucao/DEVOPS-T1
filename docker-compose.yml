@@ -1,21 +1,27 @@
 version: "3"
 services:
   frontend:
-    image: httpd:latest
-    volumes:
-      - "./frontend:/usr/local/apache2/htdocs"
+    build:
+      context: ./frontend  # Caminho para a pasta frontend
+      dockerfile: Dockerfile.nginx  # Vamos criar esse Dockerfile para Nginx
     ports:
-      - 3000:80
-      
+      - 3000:80  # Mapeia a porta 3000 no host para a porta 80 no container
+    volumes:
+     - "./frontend:/usr/share/nginx/html"  # Diretório que contém os arquivos estáticos
+     - "./frontend/nginx.conf:/etc/nginx/nginx.conf"  # Novo caminho para o nginx.conf
+    depends_on:
+      - backend  # Nome do serviço backend
+
   backend:
     container_name: simple-backend
     build:
-      context: ./
+      context: ./  # Mantenha o Dockerfile do backend como está
       dockerfile: Dockerfile
     volumes:
       - "./api:/var/www/html/"
     ports:
-      - 5000:80
+      - 5000:80  # O backend será acessado na porta 5000
+
   database:
     image: mysql:latest
     environment:
@@ -25,7 +31,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - "./db:/docker-entrypoint-initdb.d"
-      
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:

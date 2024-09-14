@@ -26,10 +26,12 @@ spec:
               value: "password"
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: "1"
+          ports:
+            - containerPort: 3306
           volumeMounts:
-            - name: mysql-volume
+            - name: mysql-init
               mountPath: /docker-entrypoint-initdb.d
       volumes:
-        - name: mysql-volume
-          hostPath:
-            path: /mnt/my-app-data  # ajustar
+        - name: mysql-init
+          configMap:
+            name: db-init-config

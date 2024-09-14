@@ -14,3 +14,6 @@ docker context use default
  kubectl apply -f frontend-service.yaml
  kubectl apply -f phpmyadmin-deployment.yaml
  kubectl apply -f phpmyadmin-service.yaml
+
+ --------------------------------------------------------------------
+ 

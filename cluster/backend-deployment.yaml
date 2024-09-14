@@ -15,15 +15,17 @@ spec:
         app: backend
     spec:
       containers:
+        env:
+          - name: MYSQL_DATABASE
+            value: "todo_app"
+          - name: MYSQL_USER
+            value: "todo_admin"
+          - name: MYSQL_PASSWORD
+            value: "password"
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: "1"      
         - name: backend-container
           image: truconses/t2:backend  
           ports:
-            - containerPort: 3001
-          volumeMounts:
-            - name: backend-volume
-              mountPath: /var/www/html/
-      volumes:
-        - name: backend-volume
-          hostPath:
-            path: /mnt/my-app-data  # ajustar
-            type: Directory 
+            - containerPort: 5000
+
