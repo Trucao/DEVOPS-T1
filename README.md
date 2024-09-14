@@ -1,5 +1,5 @@
 # DEVOPS-T1
-Trabalho de devops etapa 1
+Trabalho de devops 
 
 Joao Ricardo Lopes Lovato
 
